@@ -1,8 +1,7 @@
 <!DOCTYPE html>
 <!-- saved from url=(0041)http://static.gz/content/apis_status.html -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="./Status Apis_files/jquery-1.4.2.min.js"></script>
-    <script type="text/javascript" src="./Status Apis_files/jquery.jsonp-1.0.4.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
     <script type="text/javascript">
 
   var liveApis = [
@@ -64,18 +63,18 @@
   });
 
   function checkAPIS() {
-
     $.each(liveApis, function(index, value) { 
       $("#api" + index).removeClass("on").addClass("checking");
-      $.jsonp({
-	url: value.url + "?callback=?",
-        timeout: 5000,
+      $.ajax({
+	    url: value.url + "?callback=?",
+        dataType:"jsonp",
+        timeout:10000,
         success: function(data, status) {
-	    $("#liveApi" + index).removeClass("off").removeClass("checking").addClass("on");
+	      $("#liveApi" + index).removeClass("off").removeClass("checking").addClass("on");
         },
-	error: function(XHR, textStatus, errorThrown){
-	    $("#liveApi" + index).removeClass("on").removeClass("checking").addClass("off");
-	}
+	    error: function(XHR, textStatus, errorThrown){
+	      $("#liveApi" + index).removeClass("on").removeClass("checking").addClass("off");
+	    }
       });
     });
 
