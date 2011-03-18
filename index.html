@@ -4,36 +4,8 @@
     <script type="text/javascript" src="./Status Apis_files/jquery-1.4.2.min.js"></script>
     <script type="text/javascript" src="./Status Apis_files/jquery.jsonp-1.0.4.min.js"></script>
     <script type="text/javascript">
-  var sandboxApis = [
-    { name:"Search", url:"https://sandbox.mercadolibre.com/sites/MLA/search" },
-    { name:"Categories, Domains, Attributes", url:"https://sandbox.mercadolibre.com/sites/MLA/categories" },
-    { name:"Applications", url:"https://sandbox.mercadolibre.com/applications" },
-    { name:"Scopes", url:"https://sandbox.mercadolibre.com/scopes" },
-    { name:"Countries", url:"https://sandbox.mercadolibre.com/countries" },
-    { name:"Orders", url:"https://sandbox.mercadolibre.com/orders" },
-    { name:"Shipping", url:"https://sandbox.mercadolibre.com/shipping_methods" },
-    { name:"Questions", url:"https://sandbox.mercadolibre.com/questions" },
-    { name:"Listing types", url:"https://sandbox.mercadolibre.com/sites/MLA/listing_types" },
-    { name:"Announcements", url:"https://sandbox.mercadolibre.com/announcements" },
-    { name:"Sites, Currencies", url:"https://sandbox.mercadolibre.com/sites" },
-    { name:"Items", url:"https://sandbox.mercadolibre.com/items" },
-    { name:"Users", url:"https://sandbox.mercadolibre.com/users" }
-  ];
 
   var liveApis = [
-    { name:"Search", url:"https://api.mercadolibre.com/sites/MLA/search" },
-    { name:"Categories, Domains, Attributes", url:"https://api.mercadolibre.com/sites/MLA/categories" },
-    { name:"Applications", url:"https://api.mercadolibre.com/applications" },
-    { name:"Scopes", url:"https://api.mercadolibre.com/scopes" },
-    { name:"Countries", url:"https://api.mercadolibre.com/countries" },
-    { name:"Orders", url:"https://api.mercadolibre.com/orders" },
-    { name:"Shipping", url:"https://api.mercadolibre.com/shipping_methods" },
-    { name:"Questions", url:"https://api.mercadolibre.com/questions" },
-    { name:"Listing types", url:"https://api.mercadolibre.com/sites/MLA/listing_types" },
-    { name:"Announcements", url:"https://api.mercadolibre.com/announcements" },
-    { name:"Sites, Currencies", url:"https://api.mercadolibre.com/sites" },
-    { name:"Items", url:"https://api.mercadolibre.com/items" },
-    { name:"Users", url:"https://api.mercadolibre.com/users" },
  { name:"Announcements",url:"https://api.mercadolibre.com/announcements" },
  { name:"Addresses",url:"http://api.mercadolibre.com/users/99580221/addresses" },
  { name:"Applications",url:"http://api.mercadolibre.com/applications/search?short_name=testapp&site_id=MLA" },
@@ -82,9 +54,6 @@
   ];
 
   $(document).ready(function() {
-    $.each(sandboxApis, function(index, value) { 
-      $("#sandbox").append("<li class=\"off\" id=\"sandboxApi" + index + "\"><h3>" + value.name + "</h3></li>");
-    });
 
     $.each(liveApis, function(index, value) { 
       $("#live").append("<li class=\"off\" id=\"liveApi" + index + "\"><h3>" + value.name + "</h3></li>");
@@ -95,19 +64,6 @@
   });
 
   function checkAPIS() {
-    $.each(sandboxApis, function(index, value) { 
-      $("#api" + index).removeClass("on").addClass("checking");
-      $.jsonp({
-	url: value.url + "?callback=?",
-        timeout: 5000,
-        success: function(data, status) {
-	    $("#sandboxApi" + index).removeClass("off").removeClass("checking").addClass("on");
-        },
-	error: function(XHR, textStatus, errorThrown){
-	    $("#sandboxApi" + index).removeClass("on").removeClass("checking").addClass("off");
-	}
-      });
-    });
 
     $.each(liveApis, function(index, value) { 
       $("#api" + index).removeClass("on").addClass("checking");
@@ -196,11 +152,6 @@
 	</style>
   <link id="noteanywherecss" media="screen" type="text/css" rel="stylesheet" href="data:text/css,.note-anywhere%20.closebutton%7Bbackground-image%3A%20url%28chrome-extension%3A//bohahkiiknkelflnjjlipnaeapefmjbh/asset/deleteButton.png%29%3B%7D%0A.note-anywhere%20%7Bbackground-color%3A%20%23FFF046%3B%7D%0A.note-anywhere%20%7Bcolor%3A%20%23000066%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-family%3A%20Arial%2C%20Helvetica%2C%20sans-serif%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-size%3A%2014px%3B%7D%0A.note-anywhere%20.timestamp%20%7Bbackground-color%3A%20%23DDBB00%3B%7D%0A.note-anywhere%20.timestamp%20%7Bcolor%3A%20%23FFFFFF%3B%7D"></head>
   <body>
-    <section>
-	<h2>Sandbox</h2>
-        <ul id="sandbox">
-    	<li class="off" id="sandboxApi0"><h3>Search</h3></li><li class="on" id="sandboxApi1"><h3>Categories, Domains, Attributes</h3></li><li class="on" id="sandboxApi2"><h3>Applications</h3></li><li class="on" id="sandboxApi3"><h3>Scopes</h3></li><li class="on" id="sandboxApi4"><h3>Countries</h3></li><li class="on" id="sandboxApi5"><h3>Orders</h3></li><li class="on" id="sandboxApi6"><h3>Shipping</h3></li><li class="on" id="sandboxApi7"><h3>Questions</h3></li><li class="on" id="sandboxApi8"><h3>Listing types</h3></li><li class="off" id="sandboxApi9"><h3>Announcements</h3></li><li class="on" id="sandboxApi10"><h3>Sites, Currencies</h3></li><li class="on" id="sandboxApi11"><h3>Items</h3></li><li class="on" id="sandboxApi12"><h3>Users</h3></li></ul>
-    </section>
     <section class="text">
 	<h2>Live</h2>
         <ul id="live">
