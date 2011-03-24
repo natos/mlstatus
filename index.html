@@ -11,7 +11,7 @@
  { name:"AuthService",url:"https://api.mercadolibre.com/auth/access_token/1" },
  { name:"Catalog Domains",url:"https://api.mercadolibre.com/domains" },
  { name:"Catalog Domains Attributes",url:"https://api.mercadolibre.com/domains/1" },
- { name:"Catalog Reviews",url:"https://api.mercadolibre.com/catalog_products/Product_ids/reviews?site_id=MLA" },
+ { name:"Catalog Reviews",url:"https://api.mercadolibre.com/catalog_products/800854/reviews?site_id=MLA" },
  { name:"Categories",url:"https://api.mercadolibre.com/categories/MLA1071" },
  { name:"Categories Site",url:"https://api.mercadolibre.com/sites/MLA/categories" },
  { name:"Cities",url:"https://api.mercadolibre.com/cities/TUxBQ0NBUGZlZG1sYQ" },
@@ -38,8 +38,8 @@
  { name:"Promotion_packs",url:"https://api.mercadolibre.com/users/2767066/promotion_packs?caller.id=2767066" },
  { name:"Questions",url:"https://api.mercadolibre.com/questions" },
  { name:"Scopes",url:"https://api.mercadolibre.com/scopes" },
- { name:"Search-api",url:"https://api.mercadolibre.com/sites/MLA/search?q=ipod" },
- { name:"Search-backend",url:"https://api.mercadolibre.com/sites/MLA/searchbackend?q=ipod" },
+ { name:"Search-api",url:"https://api.mercadolibre.com/sites/MLA/search/isalive" },
+ { name:"Search-backend",url:"https://api.mercadolibre.com/sites/MLA/searchbackend/isalive" },
  { name:"Search-url",url:"https://api.mercadolibre.com/sites/MLA/searchUrl?q=ipod" },
  { name:"SEO_HOME",url:"https://api.mercadolibre.com/sites/MLA/metatags/HOME" },
  { name:"SEO_SEARCH",url:"https://api.mercadolibre.com/sites/MLA/metatags/SEARCH" },
@@ -55,7 +55,7 @@
   $(document).ready(function() {
 
     $.each(liveApis, function(index, value) { 
-      $("#live").append("<li class=\"off\" id=\"liveApi" + index + "\"><h3>" + "API: " + value.name + " - Request: " +value.url + "</h3></li>");
+      $("#live").append("<li class=\"loading\" id=\"liveApi" + index + "\"><h3>" + "API: " + value.name + " - Request: " +value.url + "</h3></li>");
       });
 
     setInterval("checkAPIS()", 0.5*60*1000);
@@ -118,6 +118,12 @@
 	    font-weight: bold;
             color: red;
           }
+
+          .loading {
+            font-weight: bold;
+            color: blue;
+          }
+
           section {
             display: block;
           }
