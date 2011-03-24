@@ -55,7 +55,7 @@
   $(document).ready(function() {
 
     $.each(liveApis, function(index, value) { 
-      $("#live").append("<li class=\"loading\" id=\"liveApi" + index + "\"><h3>" + "API: " + value.name + " - Request: " +value.url + "</h3></li>");
+      $("#live").append("<li class=\"checking\" id=\"liveApi" + index + "\"><h3>" + "API: " + value.name + " - Request: " +value.url + "</h3></li>");
       });
 
     setInterval("checkAPIS()", 0.5*60*1000);
@@ -117,11 +117,6 @@
             list-style-image: url(http://static.gz/content/Delete-icon.png);
 	    font-weight: bold;
             color: red;
-          }
-
-          .loading {
-            font-weight: bold;
-            color: blue;
           }
 
           section {
