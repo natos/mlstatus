@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+CTYPE html>
 <!-- saved from url=(0041)http://static.gz/content/apis_status.html -->
 <html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
@@ -58,7 +58,7 @@
       $("#live").append("<li class=\"checking\" id=\"liveApi" + index + "\"><h3>" + "API: " + value.name + " - Request: " +value.url + "</h3></li>");
       });
 
-    setInterval("checkAPIS()", 0.5*60*1000);
+    setInterval("checkAPIS()", 1*60*1000);
     checkAPIS();
   });
 
@@ -70,10 +70,12 @@
         dataType:"jsonp",
         timeout:10000,
         success: function(data, status) {
-	      $("#liveApi" + index).removeClass("off").removeClass("checking").addClass("on");
+	      $("#liveApi" + index).removeClass("checking").addClass("on");
+		  $("#liveApi" + index).removeClass("off").addClass("on");
         },
 	    error: function(XHR, textStatus, errorThrown){
-	      $("#liveApi" + index).removeClass("on").removeClass("checking").addClass("off");
+	      $("#liveApi" + index).removeClass("on").addClass("off");
+		  $("#liveApi" + index).removeClass("checking").addClass("off");
 	    }
       });
     });
@@ -159,5 +161,7 @@
   
 
 <button style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; width: 14px; height: 14px; position: absolute; cursor: pointer; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; background-image: url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; z-index: 4294967296; top: 517px; left: 836px; opacity: 1; display: none; background-position: initial initial; background-repeat: no-repeat no-repeat; "></button></body></html>
+
+
 
 
