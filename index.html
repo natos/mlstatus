@@ -32,6 +32,7 @@
  { name:"Location-States",url:"https://api.mercadolibre.com/states/TUxBUENBUGw3M2E1" },
  { name:"Location-Subneighborhoods",url:"https://api.mercadolibre.com/subneighborhoods/$id" },
  { name:"Merch",url:"https://api.mercadolibre.com/sites/MLA/merchs/PROD_NHP" },
+ { name:"MercadoClics Ads",url:"https://api.mercadolibre.com/mclics/ad/123123" },
  { name:"News",url:"https://api.mercadolibre.com/sites/MLA/news/search?category=MLA1743" },
  { name:"Orders",url:"https://api.mercadolibre.com/orders/1414505?caller.id=11133985" },
  { name:"Payment_methods",url:"https://api.mercadolibre.com/payment_methods/MLAMC" },
@@ -68,8 +69,8 @@
     $.each(liveApis, function(index, value) { 
       $("#api" + index).removeClass("on").addClass("checking");
       $.ajax({
-	    url: value.url + "?callback=?",
-        dataType:"jsonp",
+	  url: value.url + ((value.url.indexOf("?")>=0) ? "&" : "?") + "callback=?",
+	  dataType:"jsonp",
         timeout:10000,
         success: function(data, status) {
 	      $("#liveApi" + index).removeClass("checking").addClass("on");
@@ -156,14 +157,11 @@
   <link id="noteanywherecss" media="screen" type="text/css" rel="stylesheet" href="data:text/css,.note-anywhere%20.closebutton%7Bbackground-image%3A%20url%28chrome-extension%3A//bohahkiiknkelflnjjlipnaeapefmjbh/asset/deleteButton.png%29%3B%7D%0A.note-anywhere%20%7Bbackground-color%3A%20%23FFF046%3B%7D%0A.note-anywhere%20%7Bcolor%3A%20%23000066%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-family%3A%20Arial%2C%20Helvetica%2C%20sans-serif%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-size%3A%2014px%3B%7D%0A.note-anywhere%20.timestamp%20%7Bbackground-color%3A%20%23DDBB00%3B%7D%0A.note-anywhere%20.timestamp%20%7Bcolor%3A%20%23FFFFFF%3B%7D"></head>
   <body>
     <section class="text">
-	<h2>Live</h2>
+	<h2>Status APIs Produccion</h2>
         <ul id="live">
     </ul>
     </section>
   
 
 <button style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; width: 14px; height: 14px; position: absolute; cursor: pointer; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; background-image: url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; z-index: 4294967296; top: 517px; left: 836px; opacity: 1; display: none; background-position: initial initial; background-repeat: no-repeat no-repeat; "></button></body></html>
-
-
-
 
