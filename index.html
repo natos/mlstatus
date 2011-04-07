@@ -1,90 +1,9 @@
 <!DOCTYPE html>
-<!-- saved from url=(0041)http://static.gz/content/apis_status.html -->
-<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html>
+<head>
+    <meta charset="UTF-8">
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
-    <script type="text/javascript">
-
-  var liveApis = [
- { name:"Addresses",url:"https://api.mercadolibre.com/users/99580221/addresses" },
- { name:"Applications",url:"https://api.mercadolibre.com/applications/search?short_name=testapp&site_id=MLA" },
- { name:"Card issuers",url:"https://api.mercadolibre.com/sites/MLA/card_issuers" },
- { name:"Catalog Domains",url:"https://api.mercadolibre.com/domains" },
- { name:"Catalog Domains Attributes",url:"https://api.mercadolibre.com/domains/1" },
- { name:"Catalog Reviews",url:"https://api.mercadolibre.com/sites/MLA/catalog_products/800767/reviews/search" },
- { name:"Catalog Recomendation",url:"https://api.mercadolibre.com/sites/MLA/catalog_products/816346/recommendations/search?site=MLA&recommType=VISTOVIS" },
- { name:"Categories",url:"https://api.mercadolibre.com/categories/MLA1071" },
- { name:"Categories Site",url:"https://api.mercadolibre.com/sites/MLA/categories" },
- { name:"Cities",url:"https://api.mercadolibre.com/cities/TUxBQ0NBUGZlZG1sYQ" },
- { name:"Countries",url:"https://api.mercadolibre.com/countries" },
- { name:"Currencies",url:"https://api.mercadolibre.com/currencies/USD" },
- { name:"Currency_conversions",url:"https://api.mercadolibre.com/currency_conversions/search?from=ARS&to=USD" },
- { name:"Deals",url:"https://api.mercadolibre.com/sites/MLA/deals" },
- { name:"Featured Items",url:"https://api.mercadolibre.com/sites/MLA/featured_items/HP" },
- { name:"Geolocation",url:"https://api.mercadolibre.com/geolocation/ip/200.1.1.1" },
- { name:"Hot Items",url:"https://api.mercadolibre.com/sites/MLA/hot_items/search?limit=5&category=MLA1743" },
- { name:"Items",url:"https://api.mercadolibre.com/items/MLA87828458" },
- { name:"Listing Types",url:"https://api.mercadolibre.com/sites/MLA/listing_types" },
- { name:"Listing_exposures",url:"https://api.mercadolibre.com/sites/MLA/listing_exposures" },
- { name:"Listing_prices",url:"https://api.mercadolibre.com/sites/MLA/listing_prices?price=1" },
- { name:"Listing_types",url:"https://api.mercadolibre.com/sites/MLA/listing_types/" },
- { name:"Location-Neighborhoods",url:"https://api.mercadolibre.com/neighborhoods/TUxBQkNIQTM5NjBa" },
- { name:"Location-States",url:"https://api.mercadolibre.com/states/TUxBUENBUGw3M2E1" },
- { name:"Location-Subneighborhoods",url:"https://api.mercadolibre.com/subneighborhoods/$id" },
- { name:"Merch",url:"https://api.mercadolibre.com/sites/MLA/merchs/PROD_NHP" },
- { name:"MercadoClics Ads",url:"https://api.mercadolibre.com/mclics/ad/123123" },
- { name:"News",url:"https://api.mercadolibre.com/sites/MLA/news/search?category=MLA1743" },
- { name:"Orders",url:"https://api.mercadolibre.com/orders/1414505?caller.id=11133985" },
- { name:"Payment_methods",url:"https://api.mercadolibre.com/payment_methods/MLAMC" },
- { name:"Payment methods (MP)",url:"https://api.mercadolibre.com/sites/MLA/payment_methods" },
- { name:"Payment types",url:"https://api.mercadolibre.com/payment_types" },
- { name:"Promotion_pack_combos",url:"https://api.mercadolibre.com/users/89330146/promotion_pack_combos/124?caller.id=89330146" },
- { name:"Promotion_packs",url:"https://api.mercadolibre.com/users/2767066/promotion_packs?caller.id=2767066" },
- { name:"Questions",url:"https://api.mercadolibre.com/questions" },
- { name:"Scopes",url:"https://api.mercadolibre.com/scopes" },
- { name:"Search-api",url:"https://api.mercadolibre.com/sites/MLA/search" },
- { name:"Search-backend",url:"https://api.mercadolibre.com/sites/MLA/searchbackend" },
- { name:"Search-url",url:"https://api.mercadolibre.com/sites/MLA/searchUrl?q=ipod" },
- { name:"SEO_HOME",url:"https://api.mercadolibre.com/sites/MLA/metatags/HOME" },
- { name:"SEO_SEARCH",url:"https://api.mercadolibre.com/sites/MLA/metatags/SEARCH" },
- { name:"Shipping",url:"https://api.mercadolibre.com/shipping_methods" },
- { name:"Site_domains",url:"https://api.mercadolibre.com/site_domains/www.mercadolibre.com.ar" },
- { name:"Site Desciption",url:"https://api.mercadolibre.com/sites/MLA" },
- { name:"Sites",url:"https://api.mercadolibre.com/sites" },
- { name:"Trends",url:"https://api.mercadolibre.com/sites/MLA/trends/search?category=MLA1042" },
- { name:"Users",url:"https://api.mercadolibre.com/users/20" }
-  ];
-
-  $(document).ready(function() {
-
-    $.each(liveApis, function(index, value) { 
-      $("#live").append("<li class=\"checking\" id=\"liveApi" + index + "\"><h3>" + "API: " + value.name + " - Request: " +value.url + "</h3></li>");
-      });
-
-    setInterval("checkAPIS()", 1*60*1000);
-    checkAPIS();
-  });
-
-  function checkAPIS() {
-    $.each(liveApis, function(index, value) { 
-      $("#api" + index).removeClass("on").addClass("checking");
-      $.ajax({
-	  url: value.url + ((value.url.indexOf("?")>=0) ? "&" : "?") + "callback=?&requestfrom=mlstatuspage",
-	  dataType:"jsonp",
-        timeout:10000,
-        success: function(data, status) {
-	      $("#liveApi" + index).removeClass("checking").addClass("on");
-		  $("#liveApi" + index).removeClass("off").addClass("on");
-        },
-	    error: function(XHR, textStatus, errorThrown){
-	      $("#liveApi" + index).removeClass("on").addClass("off");
-		  $("#liveApi" + index).removeClass("checking").addClass("off");
-	    }
-      });
-    });
-
-  }
-    </script>
-        <style>
+    <style>
 	  body { font-family: "Helvetica Neue", sans-serif; font-size: 12px; margin: 0; padding: 15px 15px 15px 550px; line-height: 1.4em; }  
           h1 {
             font-size: 26px;
@@ -150,22 +69,116 @@
             margin-left: 20px;
             margin-right: 20px;
           }
-          
-
 	</style>
-  <link id="noteanywherecss" media="screen" type="text/css" rel="stylesheet" href="data:text/css,.note-anywhere%20.closebutton%7Bbackground-image%3A%20url%28chrome-extension%3A//bohahkiiknkelflnjjlipnaeapefmjbh/asset/deleteButton.png%29%3B%7D%0A.note-anywhere%20%7Bbackground-color%3A%20%23FFF046%3B%7D%0A.note-anywhere%20%7Bcolor%3A%20%23000066%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-family%3A%20Arial%2C%20Helvetica%2C%20sans-serif%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-size%3A%2014px%3B%7D%0A.note-anywhere%20.timestamp%20%7Bbackground-color%3A%20%23DDBB00%3B%7D%0A.note-anywhere%20.timestamp%20%7Bcolor%3A%20%23FFFFFF%3B%7D"></head>
-  <body>
-    <section class="text">
+<link id="noteanywherecss" media="screen" type="text/css" rel="stylesheet" href="data:text/css,.note-anywhere%20.closebutton%7Bbackground-image%3A%20url%28chrome-extension%3A//bohahkiiknkelflnjjlipnaeapefmjbh/asset/deleteButton.png%29%3B%7D%0A.note-anywhere%20%7Bbackground-color%3A%20%23FFF046%3B%7D%0A.note-anywhere%20%7Bcolor%3A%20%23000066%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-family%3A%20Arial%2C%20Helvetica%2C%20sans-serif%3B%7D%0A.note-anywhere%20%20.edit%20%7Bfont-size%3A%2014px%3B%7D%0A.note-anywhere%20.timestamp%20%7Bbackground-color%3A%20%23DDBB00%3B%7D%0A.note-anywhere%20.timestamp%20%7Bcolor%3A%20%23FFFFFF%3B%7D">
+  
+</head>
+
+<body>
+<section class="text">
+	
 	<h2>Status APIs Produccion</h2>
-        <ul id="live">
+    <ul id="live">
+     <li><a href="https://api.mercadolibre.com/applications/search?short_name=testapp&site_id=MLA">Applications</a></li>
+     <li><a href="https://api.mercadolibre.com/sites/MLA/card_issuers">Card issuers</a></li>
+     <li><a href="https://api.mercadolibre.com/domains">Catalog Domains</a></li>
+     <li><a href="https://api.mercadolibre.com/domains/1">Catalog Domains Attributes</a></li>
+     <li><a href="https://api.mercadolibre.com/sites/MLA/catalog_products/800767/reviews/search">Catalog Reviews</a></li>
+     <li><a href="https://api.mercadolibre.com/sites/MLA/catalog_products/816346/recommendations/search?site=MLA&recommType=VISTOVIS">Catalog Recomendation</a></li>
+     <li><a href="https://api.mercadolibre.com/categories/MLA1071">Categories</a></li>
+     <li><a href="https://api.mercadolibre.com/sites/MLA/categories">Categories Site</a></li>
+     <li><a href="https://api.mercadolibre.com/users/99580221/addresses">Addresses</a></li>
+     <li><a href="https://api.mercadolibre.com/cities/TUxBQ0NBUGZlZG1sYQ">Cities</a></li>
+     <li><a href="https://api.mercadolibre.com/countries">Countries</a></li>
+     <li><a href="https://api.mercadolibre.com/currencies/USD">Currencies</a></li>
+     <li><a href="https://api.mercadolibre.com/currency_conversions/search?from=ARS&to=USD">Currency_conversions</a></li>
+     <li><a href="https://api.mercadolibre.com/sites/MLA/deals">Deals</a></li>
+     <!--
+ <li><a href="">Featured Items</a></li>"https://api.mercadolibre.com/sites/MLA/featured_items/HP" },
+ <li><a href="">Geolocation</a></li>"https://api.mercadolibre.com/geolocation/ip/200.1.1.1" },
+ <li><a href="">Hot Items</a></li>"https://api.mercadolibre.com/sites/MLA/hot_items/search?limit=5&category=MLA1743" },
+ <li><a href="">Items</a></li>"https://api.mercadolibre.com/items/MLA87828458" },
+ <li><a href="">Listing Types</a></li>"https://api.mercadolibre.com/sites/MLA/listing_types" },
+ <li><a href="">Listing_exposures</a></li>"https://api.mercadolibre.com/sites/MLA/listing_exposures" },
+ <li><a href="">Listing_prices</a></li>"https://api.mercadolibre.com/sites/MLA/listing_prices?price=1" },
+ <li><a href="">Listing_types</a></li>"https://api.mercadolibre.com/sites/MLA/listing_types/" },
+ <li><a href="">Location-Neighborhoods</a></li>"https://api.mercadolibre.com/neighborhoods/TUxBQkNIQTM5NjBa" },
+ <li><a href="">Location-States</a></li>"https://api.mercadolibre.com/states/TUxBUENBUGw3M2E1" },
+ <li><a href="">Location-Subneighborhoods</a></li>"https://api.mercadolibre.com/subneighborhoods/$id" },
+ <li><a href="">Merch</a></li>"https://api.mercadolibre.com/sites/MLA/merchs/PROD_NHP" },
+ <li><a href="">MercadoClics Ads</a></li>"https://api.mercadolibre.com/mclics/ad/123123" },
+ <li><a href="">News</a></li>"https://api.mercadolibre.com/sites/MLA/news/search?category=MLA1743" },
+ <li><a href="">Orders</a></li>"https://api.mercadolibre.com/orders/1414505?caller.id=11133985" },
+ <li><a href="">Payment_methods</a></li>"https://api.mercadolibre.com/payment_methods/MLAMC" },
+ <li><a href="">Payment methods (MP)</a></li>"https://api.mercadolibre.com/sites/MLA/payment_methods" },
+ <li><a href="">Payment types</a></li>"https://api.mercadolibre.com/payment_types" },
+ <li><a href="">Promotion_pack_combos</a></li>"https://api.mercadolibre.com/users/89330146/promotion_pack_combos/124?caller.id=89330146" },
+ <li><a href="">Promotion_packs</a></li>"https://api.mercadolibre.com/users/2767066/promotion_packs?caller.id=2767066" },
+ <li><a href="">Questions</a></li>"https://api.mercadolibre.com/questions" },
+ <li><a href="">Scopes</a></li>"https://api.mercadolibre.com/scopes" },
+ <li><a href="">Search-api</a></li>"https://api.mercadolibre.com/sites/MLA/search" },
+ <li><a href="">Search-backend</a></li>"https://api.mercadolibre.com/sites/MLA/searchbackend" },
+ <li><a href="">Search-url</a></li>"https://api.mercadolibre.com/sites/MLA/searchUrl?q=ipod" },
+ <li><a href="">SEO_HOME</a></li>"https://api.mercadolibre.com/sites/MLA/metatags/HOME" },
+ <li><a href="">SEO_SEARCH</a></li>"https://api.mercadolibre.com/sites/MLA/metatags/SEARCH" },
+ <li><a href="">Shipping</a></li>"https://api.mercadolibre.com/shipping_methods" },
+ <li><a href="">Site_domains</a></li>"https://api.mercadolibre.com/site_domains/www.mercadolibre.com.ar" },
+ <li><a href="">Site Desciption</a></li>"https://api.mercadolibre.com/sites/MLA" },
+ <li><a href="">Sites</a></li>"https://api.mercadolibre.com/sites" },
+ <li><a href="">Trends</a></li>"https://api.mercadolibre.com/sites/MLA/trends/search?category=MLA1042" },
+ <li><a href="">Users</a></li>"https://api.mercadolibre.com/users/20" }
+  ];
+-->
+
     </ul>
-    </section>
+</section>
   
 
-<button style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; width: 14px; height: 14px; position: absolute; cursor: pointer; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; background-image: url(http://www.gstatic.com/codesite/ph/images/dropdown_sprite.gif); background-attachment: initial; background-origin: initial; background-clip: initial; background-color: initial; z-index: 4294967296; top: 517px; left: 836px; opacity: 1; display: none; background-position: initial initial; background-repeat: no-repeat no-repeat; "></button></body></html>
+<script>
+
+var checkAPIs = function() {
+    
+    $("#live a").each(function(i,e) {
+        var e = $(e);
+        var li = e.parent();
+        var url = e.attr("href");
+            url += ((url.indexOf("?")>=0) ? "&" : "?") + "callback=?&requestfrom=mlstatuspage";
+        
+        li.removeClass("on").removeClass("off").addClass("checking");
+      
+        $.ajax({
+     	  url: url, 
+     	  dataType:"jsonp",
+             timeout:10000,
+             success: function(data, status) {
+     	      li.removeClass("checking")
+     	        .removeClass("off")
+     	        .addClass("on");
+             },
+     	    error: function(XHR, textStatus, errorThrown){
+     	      li.removeClass("checking")
+     	        .removeClass("on")
+     	        .addClass("off")
+     	        .detach()
+     	        .prependTo("#live");
+     	    }
+        });
+
+    });
+    
+};
 
 
+$(function(){
 
+    checkAPIs();
 
+    setInterval("checkAPIs()", 1*60*1000);
 
+});
+
+</script>
+
+</body>
+</html>
 
