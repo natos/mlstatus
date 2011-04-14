@@ -1,10 +1,10 @@
 {
   "name": "MercadoLibre API Status",
-  "version": "1.0",
+  "version": "1.1",
   "description": "Check the uptime status of MercadoLibre API.",
   "browser_action": {
     "default_title": "MercadoLibre API Status",
-    "default_icon": "ml16.png",
+    "default_icon": "ml128.png",
     "default_popup": "status.html"
   },
   "icons": { 
