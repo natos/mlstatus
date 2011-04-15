@@ -1,0 +1,50 @@
+body { 
+    font: 14px/25px Verdana, Arial, Helvetica, "Nimbus Sans L", sans-serif;<br/>
+    width: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    color: #999;
+} 
+p, img, li, body {
+    margin: 0;
+    padding: 0;
+}
+
+li a {
+    color: #00C;
+    text-decoration: none;
+}
+
+li a:hover {
+    color: #00F;
+    text-decoration: underline;
+}
+
+#logo {
+    text-align: center;
+    margin: 10px;
+}
+
+#logo label {
+    color: #999;    
+}
+
+#logo label:hover {
+    color: #000;    
+}
+
+#live {
+    width: 290px;
+}
+
+.on {
+    list-style-image: url(http://static.mlstatic.com/org-img/icons/ok-ico.gif?a=a);
+}
+.checking, li {
+    list-style-image: url('data:image/png;base64,R0lGODlhEgASAPECAMXe/zNmzAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh+QQFCgACACwAAAAAEgASAAACM5RvEcit2hAA6ZnJJhZQaHp8jSiBoxmlpRpSZPq9kbixNavea6l7Gg/ayHyXHzFnxBVTBQAh+QQFCgACACwHAAAACQAGAAACDxQgqXeajEQIL87p5M1aFAAh+QQFCgACACwMAAIABgAJAAACDxQgeaebhp6UIbxaE7baFgAh+QQFCgACACwMAAcABgAJAAACD5QBJojH2pQMQVFqbs1bFAAh+QQFCgACACwHAAwACQAGAAACDpQPcJgaYRp4Lzq6TM0FACH5BAUKAAIALAIADAAJAAYAAAIPVCKpd5qMBAAvzunkzVoUACH5BAUKAAIALAAABwAGAAkAAAIPVCJ5p5uGnpQAvFoTttoWACH5BAUKAAIALAAAAgAGAAkAAAIPlBMmiMfalARAUWpuzVsUADs=');
+}
+.off {
+    list-style-image: url(http://static.mlstatic.com/org-img/icons/error16.gif);
+    font-weight: bold;
+    color: red;
+}
