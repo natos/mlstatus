@@ -1,6 +1,6 @@
 ML API Status
 =============
-This small app let you know the uptime status of MercadoLibre APIs.
+This small app let you know MercadoLibre API status.
 
 Chrome extension
 ----------------
